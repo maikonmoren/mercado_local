@@ -3,12 +3,14 @@
 namespace App\Models;
 
 use App\Models\Auth;
-
+use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Lumen\Auth\Authorizable;
 
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends AuthUser
+class AdminUser extends AuthUser
 {
     use HasFactory;
 
@@ -18,7 +20,7 @@ class User extends AuthUser
      * @var array
      */
     protected $fillable = [
-        'name', 'email','avatar'
+        'name', 'email','photo'
     ];
 
     /**

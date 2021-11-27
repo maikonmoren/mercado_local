@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
-use App\Models\Auth;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Hash;
 
 
-class User extends AuthUser
+class MerchantUser extends Authuser
 {
     use HasFactory;
 
@@ -18,7 +17,7 @@ class User extends AuthUser
      * @var array
      */
     protected $fillable = [
-        'name', 'email','avatar'
+        'name', 'email','logo','document', 'password'
     ];
 
     /**
@@ -26,12 +25,12 @@ class User extends AuthUser
      *
      * @var array
      */
-    protected $hidden = [
-        'password',
+     protected $hidden = [
+        'password' , 'document'
     ];
 
     public function setPasswordAttribute(string $secret)
     {
-        $this->attributes['password'] = Hash::make( $secret );
+          $this->attributes['password'] = Hash::make( $secret );
     }
 }

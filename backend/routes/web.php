@@ -16,3 +16,11 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group([ 'prefix' => 'merchant' ], function() use ( $router ){
+    require_once __DIR__ . "/merchant/index.php";
+});
+
+$router->group([] , function() use ($router){
+    require_once __DIR__ . "/common/index.php" ;
+});
